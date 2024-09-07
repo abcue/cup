@@ -1,4 +1,4 @@
-package tool
+package cup
 
 import (
 	"strings"
@@ -21,7 +21,7 @@ RunPrint: {
 }
 
 PrintRun: {
-	CMD=[_]: {
+	CMD=[_]: RunPrint & {
 		// declare task `printR: _` to print command from all `exec.Run` tasks
 		printR?: cli.Print & {
 			text: strings.Join([for _, task in CMD if (task & exec.Run) != _|_ {"#!\(task.cmd)"}], "\n")
