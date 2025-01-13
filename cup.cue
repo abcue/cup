@@ -28,3 +28,14 @@ PrintRun: {
 		}
 	}
 }
+
+AR=AndRun: {
+	#var: andRun: [...(string | [...string])]
+	"and-run--1": cli.Print & {text: ""}
+	for i, rc in #var.andRun {
+		"and-run-\(i)": exec.Run & {
+			$after: AR["and-run-\(i-1)"]
+			cmd:    rc
+		}
+	}
+}

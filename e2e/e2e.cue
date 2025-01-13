@@ -26,4 +26,8 @@ import (
 	"e2e-run-print": cup.RunPrint & {
 		runP: exec.Run & {cmd: "echo 'runP'"}
 	}
+	// test cup.AndRun
+	"e2e-and-run": cup.AndRun & {
+		#var: andRun: ["echo 'andRun1'", ["echo", "'andRun2'"], "echo 'andRun3'"]
+	}
 }
